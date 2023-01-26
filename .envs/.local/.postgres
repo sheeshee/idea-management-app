@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=idea_management_app
+POSTGRES_USER=nOnWLKCCAAilZoJpDlIXrveuGPfLUrkI
+POSTGRES_PASSWORD=qwGFUSZgUsnHxardbtpfWYlCGX0n3vRsI36B0IqYAYyY1QGVRrchoCJeHuIh08EL
