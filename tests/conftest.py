@@ -32,3 +32,12 @@ class IdeaFactory(factory.django.DjangoModelFactory):
     title = factory.Faker("sentence", nb_words=4)
     body = factory.Faker("paragraph", nb_sentences=3)
     owner = factory.SubFactory(UserFactory)
+
+
+@register(_name="idea_with_related")
+class IdeaWithRelatedIdea(IdeaFactory):
+
+    @factory.post_generation
+    def set_related(obj, create, extracted, **kwargs):
+        other_idea = IdeaFactory()
+        obj.related.set([other_idea])

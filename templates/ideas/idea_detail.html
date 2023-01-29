@@ -7,4 +7,21 @@
 <p>{{ idea.owner }}</p>
 <p>{{ idea.created }}</p>
 
+{% if idea.related.all %}
+<h2>Related Ideas</h2>
+<ul>
+    {% for thing in idea.related.all %}
+        <li><a href="{% url 'detail' thing.id %}">{{ thing.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<h2>Create an Inspired Idea</h2>
+<form action="{% url 'new' %}" method="post">
+    {% csrf_token %}
+    {{ inspired_idea_form.as_p }}
+    <input hidden name="related" value="{{ idea.pk }}">
+    <input type="submit">
+</form>
+
 {% endblock %}

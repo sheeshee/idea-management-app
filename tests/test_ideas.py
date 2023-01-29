@@ -30,8 +30,20 @@ def post_idea(authenticated_client, idea_json):
 
 
 @pytest.fixture
+def post_inspired_idea(authenticated_client, idea, idea_json):
+    idea_json['related'] = [idea.pk]
+    return authenticated_client.post("/ideas/new", idea_json)
+
+
+@pytest.fixture
 def get_idea(authenticated_client, idea):
     return authenticated_client.get(f"/ideas/{idea.pk}")
+
+
+@pytest.fixture
+def get_idea_with_related(authenticated_client, idea_with_related):
+    return authenticated_client.get(f"/ideas/{idea_with_related.pk}")
+
 
 
 @pytest.mark.django_db
@@ -73,3 +85,21 @@ def test_detail_view_200(get_idea):
 @pytest.mark.django_db
 def test_detail_view(get_idea, idea):
     assert idea.title in str(get_idea.content)
+
+
+@pytest.mark.django_db
+def test_detail_view_shows_related_ideas(get_idea_with_related, idea_with_related):
+    related_idea = idea_with_related.related.first()
+    assert related_idea.title in str(get_idea_with_related.content)
+
+
+@pytest.mark.django_db
+def test_create_inspired_idea_302(post_inspired_idea):
+    assert post_inspired_idea.status_code == 302
+
+
+@pytest.mark.django_db
+def test_create_inspired_idea_db_updated(post_inspired_idea, idea_json):
+    new_idea = Idea.objects.get(title=idea_json["title"])
+    related_ids = list(new_idea.related.all().values_list("pk", flat=True))
+    assert related_ids == idea_json["related"]
