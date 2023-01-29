@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Existing Ideas</h1>
+    <a href="{% url "new" %}">New</a>
+
+    {% for idea in idea_list %}
+        <div>
+            <h2>{{ idea.title }}</h2>
+            <p>{{ idea.body }}</p>
+            <p>{{ idea.owner.email }}</p>
+            <p>{{ idea.created }}</p>
+
+        </div>
+    {% endfor %}
+
+
+{% endblock %}
