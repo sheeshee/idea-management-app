@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DetailView
 from django.urls import reverse_lazy
 from ideas.models import Idea
 
@@ -14,4 +14,8 @@ class CreateIdea(CreateView):
 
 
 class ListIdeas(ListView):
+    model = Idea
+
+
+class DetailIdea(DetailView):
     model = Idea

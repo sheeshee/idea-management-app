@@ -6,11 +6,10 @@
 
     {% for idea in idea_list %}
         <div>
-            <h2>{{ idea.title }}</h2>
+            <a href="{% url 'detail' idea.pk %}"><h2>{{ idea.title }}</h2></a>
             <p>{{ idea.body }}</p>
-            <p>{{ idea.owner.email }}</p>
+            <p>{{ idea.owner }}</p>
             <p>{{ idea.created }}</p>
-
         </div>
     {% endfor %}
 

@@ -29,6 +29,11 @@ def post_idea(authenticated_client, idea_json):
     return authenticated_client.post("/ideas/new", idea_json)
 
 
+@pytest.fixture
+def get_idea(authenticated_client, idea):
+    return authenticated_client.get(f"/ideas/{idea.pk}")
+
+
 @pytest.mark.django_db
 def test_list_view_has_title(ideas_list_view):
     assert b"Existing Ideas" in ideas_list_view.content
@@ -58,3 +63,13 @@ def test_post_idea_db_updated(post_idea, idea_json):
 def test_post_idea_owner_set(post_idea):
     idea = Idea.objects.last()
     assert isinstance(idea.owner, User)
+
+
+@pytest.mark.django_db
+def test_detail_view_200(get_idea):
+    assert get_idea.status_code == 200
+
+
+@pytest.mark.django_db
+def test_detail_view(get_idea, idea):
+    assert idea.title in str(get_idea.content)
