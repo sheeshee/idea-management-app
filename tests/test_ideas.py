@@ -4,6 +4,7 @@ import pytest
 from conftest import IdeaFactory
 from ideas.models import Idea
 from tests.conftest import IdeaFactory
+import numpy as np
 
 
 User = get_user_model()
@@ -31,7 +32,7 @@ def post_idea(authenticated_client, idea_json):
 
 @pytest.fixture
 def post_inspired_idea(authenticated_client, idea, idea_json):
-    idea_json['related'] = [idea.pk]
+    idea_json["related"] = [idea.pk]
     return authenticated_client.post("/ideas/new", idea_json)
 
 
@@ -43,7 +44,6 @@ def get_idea(authenticated_client, idea):
 @pytest.fixture
 def get_idea_with_related(authenticated_client, idea_with_related):
     return authenticated_client.get(f"/ideas/{idea_with_related.pk}")
-
 
 
 @pytest.mark.django_db
@@ -103,3 +103,16 @@ def test_create_inspired_idea_db_updated(post_inspired_idea, idea_json):
     new_idea = Idea.objects.get(title=idea_json["title"])
     related_ids = list(new_idea.related.all().values_list("pk", flat=True))
     assert related_ids == idea_json["related"]
+
+
+@pytest.mark.django_db
+def test_set_embedding(idea):
+    idea.set_embedding()
+    assert idea.embedding is not None
+
+
+@pytest.mark.django_db
+def test_get_embedding(idea):
+    idea.set_embedding()
+    embedding = idea.get_embedding()
+    assert isinstance(embedding, np.ndarray)

@@ -36,7 +36,6 @@ class IdeaFactory(factory.django.DjangoModelFactory):
 
 @register(_name="idea_with_related")
 class IdeaWithRelatedIdea(IdeaFactory):
-
     @factory.post_generation
     def set_related(obj, create, extracted, **kwargs):
         other_idea = IdeaFactory()

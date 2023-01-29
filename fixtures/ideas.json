@@ -1,0 +1,75 @@
+[
+{
+  "model": "users.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$3rdMqLUEt7wjTkHeo8aC5V$d3rmR9VrfN7dtt4Jj4u4edtt5fEBo0oYTLaZzI5osX8=",
+    "last_login": "2023-01-29T15:28:07.353Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2023-01-29T15:27:59.840Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "ideas.idea",
+  "pk": 11,
+  "fields": {
+    "title": "The role of mineral depletion on insect depopulation",
+    "body": "It has been established that the mineral content, particularly of trace minerals, in modern food crops is considerably lower than in their natural forms, a phenomenon that arises as a result of a number of causes. Intense fertilization methods, selective breeding of crop species, topsoil erosion and even plant morphology responses to elevated atmospheric carbon dioxide all contribute to radically depleted mineral content in cultivated crops. Wild plants can be expected to exhibit the same phenomenon, albeit to a lesser extent. This depletion could be expected to have significant nutritional implications for terrestrial animals. This effect would be more pronounced for insects than for feral grazing mammals, as the former have greater mobility to access and consume cultivated crops, which have the lowest mineral contents.\r\n\r\nIt has also been observed that insect populations have plummeted in the last 50 years, with no consensus as to the contributing causes and their respective severity. The role of nutritional deficiencies arising from mineral depletion has yet to be investigated, and could be a significant contributor to insect de-population.\r\n\r\n(originally from https://beta.briefideas.org/ideas/8e224d20d4fadb46bb0ca158956831d6)",
+    "owner": 1,
+    "created": "2023-01-29T17:42:11.924Z",
+    "related": []
+  }
+},
+{
+  "model": "ideas.idea",
+  "pk": 12,
+  "fields": {
+    "title": "Evidence that Tone, Rhythm, Melody, and Harmony are Experienced Multisensorily Thereby Providing Dea",
+    "body": "For millennia mankind has absorbed (TRM&H) from the environment through plants, animals, weather, geological features, and water in myriad manifestations. CONSEQUENCE #1: All individuals have a deep understanding of and fondness for TRM&H regardless of the senses through which they are perceived. CONSEQUENCE #2: Various societies combine TRM&H in different ways and utilize the senses differently. Most societies combine TRM&H multisensorily. But to Westerners, the combination of TRM&H experienced auditorily is “music,” visually: visual art, kinesthetically: dance, and gustatorily: cuisine.\r\n\r\nMy hypothesis is that autistics who have odd responses to sound and Deaf people can reap the benefits associated with the concept “music” through senses in addition to sound. Many artists present music multisensorily and Deaf people express music kinesthetically through sign-language. Within a given culture the music, dance, art, cuisine, and architecture each contain the same TRM&H. The structure of a language perpetuates whether its speakers combine TRM&H in one sense at a time or multisensorily. Different cultures have established which sounds, tastes, emotions, colors, and more correspond directly to each other. Synesthesia demonstrates the human capacity to experience something through multiple senses. Similar patterns occur in the brain whether specific TRM&H’s are experienced visually, auditorily, kinesthetically, or tactilely.\r\n\r\n(originally from https://beta.briefideas.org/ideas/6f9af36bcf414592976d9a39a6d96b9b)",
+    "owner": 1,
+    "created": "2023-01-29T17:42:38.998Z",
+    "related": []
+  }
+},
+{
+  "model": "ideas.idea",
+  "pk": 13,
+  "fields": {
+    "title": "Coiling attached with UV source and gas inlet for ballast water treatment",
+    "body": "Ships carry giant volume of ballast water required to sink in Sea. The loading and unloading of ballast water causes negative impact on marine environment. The discharged ballast water typically contains both macroscopic and microscopic plants, animals, bacteria, fungi and viruses. It is mandatory to treat ballast water by eco-friendly means. Biofouling of large macroscopic animals and their invasion is difficult to control. Microbial biofouling can be effectively controlled using physicochemical, physical enhancement and residual control method. Physical measures include UV irradiation, UV + TiO2, deoxygenation, gas injection, ultrasonic treatment, and cavitation. These methods are carried out by using pipes having UV tubes and gas inlet. Because of high speed of pumping water in and out, pathogenic microorganisms either exposed for less time to UV light or the dissolution rate of gas is very less. This problem can be overcome by the use of coiling with UV tubes and gas inlet system and borosilicate UV tubes submerged in the ballast tanks. It increases the exposure of pathogenic microorganisms to UV light and gas for longer period of time. This method is effective in reduction of pathogenic province and may be used as alternative method for the ballast water treatment.\r\n\r\n(originally from https://beta.briefideas.org/ideas/b4cba8e3a163064e1551eb6077f462d8)",
+    "owner": 1,
+    "created": "2023-01-29T17:46:13.384Z",
+    "related": []
+  }
+},
+{
+  "model": "ideas.idea",
+  "pk": 14,
+  "fields": {
+    "title": "The Growing Need for Domain-Driven Languages",
+    "body": "With computer science permeating every research disciple such that even rudimentary computational skills are now required for most research careers, it should not be the case that one needs advanced knowledge of computer science to be effective in their field.\r\n\r\nIf we take Bioinformatics as an example, the non-computational biologist practitioner should be able to express theories in a truncated form of how they already speak of biology -- a Domain-Driven Language (DDL) which can then be computationally processed. Tools such as Nextflow and Snakemake, as workflow managers, make progress in this direction, but as they do not abstract away the data flow model they rely upon, do not go far enough.\r\n\r\nI posit that unified domain-driven grammars are possible consisting of: verbs which define the action to be done (e.g., align); adjectives which define how the verb is to be done (e.g., local); nouns which define what the verb acts upon (e.g., sequence 1 and sequence 2); intents which define manner of action (e.g., longest match); and helpers which are meant to clarify intent (e.g., sequence 1 is reference, sequence 2 is query). An executed DDL should be able to use the same grammar to describe what was run in terms the executor understands.\r\n\r\n(originally from https://beta.briefideas.org/ideas/d216d707e6077f0c53aabf8cb1751bd9)",
+    "owner": 1,
+    "created": "2023-01-29T17:47:11.509Z",
+    "related": []
+  }
+},
+{
+  "model": "ideas.idea",
+  "pk": 15,
+  "fields": {
+    "title": "“WORKPLACE” as a subject in British Journals in 2020",
+    "body": "The data for this study is limited to British journals and the research focus is on the main points regarding the subject of “workplace” during 2020. This study is based on two main research questions:\r\n\r\nDid Covid-19 become a regular topic regarding “workplace” issues each month in British journals in 2020?\r\nWhat were the main insights related to the “workplace” subject in British journals in 2020 and in which frequency?\r\nThe methods for this study are compiled with the focus on 102 articles about the workplace from different online journals in Europe listed in Europe News Sources in WorldDataAi. It focuses on thirty-one articles in journals that are published in the United Kingdom. It also makes use of a text mining process on the web-based qualitative analysis tool “3rdeyeinformation”.\r\n\r\n(originally from https://beta.briefideas.org/ideas/9a6fef279722efc6772074f0d850887b)",
+    "owner": 1,
+    "created": "2023-01-29T17:48:25.155Z",
+    "related": []
+  }
+}
+]
