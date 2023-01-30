@@ -1,6 +1,7 @@
 import pickle
 from django.db import models
 from django.contrib.auth import get_user_model
+from sentence_transformers import util
 
 from nlp import language_model
 
@@ -35,3 +36,25 @@ class Idea(models.Model):
             return pickle.loads(self.embedding)
         else:
             return None
+
+
+class Similarity(models.Model):
+
+    class Meta:
+        verbose_name_plural = "Similarities"
+
+    score = models.FloatField(null=True)
+    ideas = models.ManyToManyField(Idea)
+
+    def calculate(self):
+        embeddings = []
+        for idea in self.ideas.all():
+            idea.set_embedding()
+            embeddings.append(idea.get_embedding())
+        assert len(embeddings) == 2, "There can only be two ideas per Similarity object"
+        assert all([e is not None for e in embeddings]), "Embeddings for both objects must exist"
+        return float(util.cos_sim(embeddings[0], embeddings[1]))
+
+    def set_score(self):
+        self.score = self.calculate()
+        self.save()

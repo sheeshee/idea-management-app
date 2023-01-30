@@ -1,12 +1,15 @@
 from app.celery import app
-from .models import Idea
+from django.db.models import Q
+from .models import Idea, Similarity
 
 
 @app.task
-def find_similar_ideas(idea_id):
-    Idea.objects.get(id=idea_id).get_similar_ideas()
-
-
-@app.task
-def run_set_embedding(idea_id):
-    Idea.objects.get(id=idea_id).set_embedding()
+def run_set_similarities(idea_id):
+    base = Idea.objects.get(id=idea_id)
+    base.set_embedding()
+    ideas = Idea.objects.filter(~Q(id=idea_id)).all()
+    for idea in ideas:
+        sim = Similarity()
+        sim.save()
+        sim.ideas.set([base, idea])
+        sim.set_score()

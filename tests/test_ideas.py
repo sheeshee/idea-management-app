@@ -11,11 +11,6 @@ User = get_user_model()
 
 
 @pytest.fixture
-def ideas_list():
-    return IdeaFactory.create_batch(3)
-
-
-@pytest.fixture
 def ideas_list_view(client):
     return client.get("/ideas/")
 
@@ -116,3 +111,9 @@ def test_get_embedding(idea):
     idea.set_embedding()
     embedding = idea.get_embedding()
     assert isinstance(embedding, np.ndarray)
+
+
+@pytest.mark.django_db
+def test_similarity_calculate(similarity):
+    score = similarity.calculate()
+    assert isinstance(score, float)

@@ -3,7 +3,7 @@ from django.db import transaction
 from django.forms import ModelForm
 from django.urls import reverse_lazy
 from ideas.models import Idea
-from ideas.tasks import find_similar_ideas
+from ideas.tasks import run_set_similarities
 
 # Create your views here.
 class IdeaForm(ModelForm):
@@ -24,11 +24,13 @@ class CreateIdea(CreateView):
         obj = form.save()
         parent_id_list = self.request.POST.get("related")
         if parent_id_list is not None:
+            if isinstance(parent_id_list, str):
+                parent_id_list = [int(parent_id_list)]
             form.instance.related.set(
                 [Idea.objects.get(pk=pk) for pk in parent_id_list]
             )
         response = super().form_valid(form)
-        find_similar_ideas.delay(obj.id)
+        run_set_similarities.delay(obj.id)
         return response
 
 

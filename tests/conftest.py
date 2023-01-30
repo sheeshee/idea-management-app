@@ -3,6 +3,8 @@ import pytest
 import factory
 from pytest_factoryboy import register
 
+from ideas.models import Similarity
+
 
 @pytest.fixture
 def client():
@@ -40,3 +42,16 @@ class IdeaWithRelatedIdea(IdeaFactory):
     def set_related(obj, create, extracted, **kwargs):
         other_idea = IdeaFactory()
         obj.related.set([other_idea])
+
+
+@pytest.fixture
+def ideas_list():
+    return IdeaFactory.create_batch(3)
+
+
+@pytest.fixture
+def similarity(ideas_list):
+    sim = Similarity()
+    sim.save()
+    sim.ideas.set(ideas_list[0:2])
+    return sim
