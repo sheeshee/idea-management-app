@@ -8,13 +8,17 @@
 <p>{{ idea.created }}</p>
 
 {% if idea.related.all %}
-<h2>Related Ideas</h2>
+<h2>Forked Ideas</h2>
 <ul>
     {% for thing in idea.related.all %}
         <li><a href="{% url 'detail' thing.id %}">{{ thing.title }}</a></li>
     {% endfor %}
 </ul>
 {% endif %}
+
+<h2>We think this idea is similar</h2>
+<a href="{% url 'detail' similar_idea.id %}"><h3>{{ similar_idea.title }}</h3></a>
+<p>{{ similar_idea.body }}</p>
 
 <h2>Create an Inspired Idea</h2>
 <form action="{% url 'new' %}" method="post">

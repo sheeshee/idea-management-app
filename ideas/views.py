@@ -44,4 +44,5 @@ class DetailIdea(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["inspired_idea_form"] = IdeaForm()
+        context['similar_idea'] = self.get_object().get_most_similar()
         return context

@@ -37,6 +37,11 @@ class Idea(models.Model):
         else:
             return None
 
+    def get_most_similar(self):
+        similarity = self.similarity_set.order_by("-score").first()
+        idea = similarity.ideas.filter(~models.Q(id=self.id)).first()
+        return idea
+
 
 class Similarity(models.Model):
 
